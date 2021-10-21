@@ -1,37 +1,24 @@
 @extends('layouts.helloapp')
 
-@section('title','index')
+@section('title','Person.Delete')
 
 @section('menubar')
 @parent
-インデックスページ
+削除ページ
 @endsection
 
 @section('content')
-<table>
-    <tr><th>Person</th><th>Board</th></tr>
-    @foreach ($items as $item)
-        <tr>
-            <td>{{$item->getData()}}</td>
-            <td>
-               <table width="100%">              
-                    @foreach ($item->boards as $obj)  
-            <tr><td>{{$obj->getData()}}</td></tr>        
-    @endforeach
-       </table>
- 
-            </td>
-        </tr>
-        @endforeach
-</table>
-<div style="margin:10px;"></div>
-<table>
-    <tr><th>Person</th></tr>
-    @foreach ($noitems as $item)  
-    <tr><td>{{$item->getData()}}</td></tr>        
-@endforeach
-</table>
 
+<form action="/person/del" method="post">
+    <table>
+        @csrf
+        <input type="hidden" name="id" value="{{$form->id}}">
+        <tr><th>name: </th><td>{{$form->name}}</td></tr>
+        <tr><th>email: </th><td>{{$form->email}}</td></tr>
+        <tr><th>age: </th><td>{{$form->age}}</td></tr>
+        <tr><th></th><td><input type="submit" value="send"></td></tr>
+    </table>
+</form>
 
 {{-- @include('components.message',['msg_title'=>'OK','msg_content'=>'サブメニューです。']) --}}
 

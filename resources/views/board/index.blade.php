@@ -1,36 +1,24 @@
 @extends('layouts.helloapp')
 
-@section('title','index')
+@section('title','Board.index')
 
 @section('menubar')
 @parent
-インデックスページ
+ボード・ページ
 @endsection
 
 @section('content')
 <table>
-    <tr><th>Person</th><th>Board</th></tr>
+    <tr><th>message</th><th>Name</title></th></tr>
     @foreach ($items as $item)
         <tr>
-            <td>{{$item->getData()}}</td>
-            <td>
-               <table width="100%">              
-                    @foreach ($item->boards as $obj)  
-            <tr><td>{{$obj->getData()}}</td></tr>        
-    @endforeach
-       </table>
- 
-            </td>
+            <td>{{$item->message}}</td>
+            <td>{{$item->person->name}}</td>
+            {{-- <td>{{$item['message']}}</td>             --}}
         </tr>
-        @endforeach
-</table>
-<div style="margin:10px;"></div>
-<table>
-    <tr><th>Person</th></tr>
-    @foreach ($noitems as $item)  
-    <tr><td>{{$item->getData()}}</td></tr>        
-@endforeach
-</table>
+    @endforeach
+        </table>
+
 
 
 {{-- @include('components.message',['msg_title'=>'OK','msg_content'=>'サブメニューです。']) --}}

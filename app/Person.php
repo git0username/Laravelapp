@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Person extends Model
 {
 
-    protected $quarded = array('id');
+    protected $guarded = array('id');
 
     public static $rules = array(
         'name' => 'required',
@@ -34,5 +34,10 @@ class Person extends Model
     public function scopeAgeLessThan($query, $n)
     {
         return $query->where('age', '<=', $n);
+    }
+
+    public function boards()
+    {
+        return $this->hasMany('App\Board');
     }
 }
